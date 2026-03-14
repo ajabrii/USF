@@ -4,50 +4,67 @@ Welcome to **La Table d'Or**, a sleek, modern, and fully-functional restaurant b
 
 ---
 
-1. **Setup Database User**
-   Run this command to create the dedicated user (required for connection):
+## 🚀 How to Run
+
+### Option 1: Linux/macOS (Terminal)
+1. **Setup Database User**:
    ```bash
    sudo mysql < /home/ajabri/Desktop/USF/restaurant_booking/create_user.sql
    ```
-
-2. **Start the PHP Development Server**
-   In the root directory, run:
+2. **Start Server**:
    ```bash
    php -S localhost:8000
    ```
+3. **View App**: [http://localhost:8000/restaurant_booking/public/](http://localhost:8000/restaurant_booking/public/)
 
-2. **Access the Application**
-   Open your browser and navigate to:
-   [http://localhost:8000/restaurant_booking/public/](http://localhost:8000/restaurant_booking/public/)
+### Option 2: Windows (XAMPP/MAMP)
+1. **Move Project**: Copy the `restaurant_booking` folder to your server's root (e.g., `C:\xampp\htdocs\`).
+2. **Start Services**: Open your control panel and start **Apache** and **MySQL**.
+3. **Database Setup**:
+   - Open [phpMyAdmin](http://localhost/phpmyadmin/).
+   - Import `database.sql`.
+   - Run the script in `create_user.sql` using the SQL tab to enable application connectivity.
+4. **View App**: [http://localhost/restaurant_booking/public/](http://localhost/restaurant_booking/public/)
 
 ---
 
 ## 🔐 Test Accounts
 
-Use these credentials to explore the different roles:
-
 | Role | Email | Password |
 | :--- | :--- | :--- |
 | **Admin** | `admin@test.com` | `admin123` |
-| **User 1** | `user1@test.com` | `user123` |
-| **User 2** | `user2@test.com` | `user123` |
+| **User** | `user1@test.com` | `user123` |
 
 ---
 
-## ✨ Features
+## 🌟 Detailed Feature Guide
 
-### 👤 For Customers
-- **Dashboard**: View upcoming reservations at a glance.
-- **Easy Booking**: Intuitive form to choose dates, time slots, and guest counts.
-- **Smart Validation**: Real-time capacity checks prevent overbooking.
-- **Manage Bookings**: Edit or cancel your reservations with ease.
-- **Live Feedback**: GSAP-powered animations for a premium feel.
+### 👤 Customer Experience (ROLE_USER)
+*   **Dynamic Dashboard**: A personalized welcome screen showing a summary of your upcoming reservations and quick-action buttons for common tasks.
+*   **Intuitive Booking Flow**:
+    *   **Date Selection**: Smart calendar that prevents booking for past dates.
+    *   **Slot Selection**: Automatically fetches available time slots for the chosen day.
+    *   **Capacity Guard**: Real-time validation that blocks bookings exceeding the restaurant's seat limits for a specific slot.
+*   **Reservation Management**:
+    *   **My Reservations**: A dedicated list view categorized by status (Confirmed/Cancelled).
+    *   **Easy Editing**: Need more seats or a different time? Update your existing bookings instantly.
+    *   **Quick Cancellation**: Cancel reservations with a single click and clear confirmation.
+*   **Confirmation Hub**: A beautifully animated confirmation page summarizing your booking details with GSAP-powered transitions.
 
-### 🛠️ For Administrators
-- **Reservation Overview**: Filter and manage all restaurant bookings.
-- **Slot Management**: Full CRUD (Create, Read, Update, Delete) for time slots.
-- **Dynamic Capacity**: Toggle slots active/inactive or adjust seat limits on the fly.
-- **Live Stats**: Key metrics visible on the admin dashboard.
+### 🛠️ Administrative Control (ROLE_ADMIN)
+*   **Global Overview**: Access to all restaurant activity. The admin dashboard features live counters for today's bookings, guest totals, and user base metrics.
+*   **Reservation Master List**:
+    *   **Advanced Filtering**: Sort through the entire database by date, status, or specific time slots.
+    *   **Admin Override**: Permission to cancel any reservation in the system for operational needs.
+*   **Time Slot Command Center**:
+    *   **Full CRUD**: Create new lunch or dinner services, edit existing ones, or delete unused slots.
+    *   **Service Toggling**: Instantly activate or deactivate specific time slots (e.g., closing a service for a private event) without deleting them.
+    *   **Seat Management**: Fine-tune the maximum capacity for every individual service period.
+
+### ⚡ Technical Highlights
+*   **GSAP 1.11.1 Motion Engine**: 13 distinct animation zones, including staggered list reveals, form-field sequences, and animated capacity progression bars.
+*   **Glassmorphism Glass UI**: A premium dark-themed interface with backdrop blurs, glow effects, and modern typography.
+*   **Industrial-Grade Security**: Full CSRF protection on all forms, MySQLi prepared statements for 100% SQL injection immunity, and strict Role-Based Access Control (RBAC).
 
 ---
 

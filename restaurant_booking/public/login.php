@@ -57,6 +57,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <input type="password" id="password" name="password" required autocomplete="current-password" placeholder="••••••••">
       <button type="submit">Se connecter</button>
     </form>
+    <div style="margin-top: 1.5rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+      <p style="color: var(--text-muted); font-size: 0.9rem;">
+        Pas encore de compte ? <a href="/restaurant_booking/public/register.php" style="color: var(--accent); text-decoration: none; font-weight: 600;">S'inscrire</a>
+      </p>
+    </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.11.1/TweenMax.min.js"></script>
   <script src="/restaurant_booking/public/js/animations.js"></script>
